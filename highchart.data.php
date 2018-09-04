@@ -175,6 +175,8 @@ class GenerateSeries{
         }
         return $returnArr;
     }
+    //析构函数
+    function __destruct() {}    
 }
 
 $test=new GenerateSeries($data_array);
