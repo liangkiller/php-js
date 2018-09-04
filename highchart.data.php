@@ -1,27 +1,6 @@
 <?php
-$data_array=array(
-array('timestamp'=>'1518624000000','指标1'=>'130','指标2'=>'388','指标3'=>'584'),
-array('timestamp'=>'1518710400000','指标1'=>'105','指标2'=>'483','指标3'=>'584'),
-array('timestamp'=>'1518820400000','指标1'=>'','指标2'=>'483','指标3'=>'584'),
-);
-$data_name=array(
-array('timestamp'=>'1516636800000','指标1'=>'www1','指标2'=>'2'),
-array('timestamp'=>'1516636800000','指标1'=>'www2','指标2'=>'42'),
-array('timestamp'=>'1516636800000','指标1'=>'www3','指标2'=>'3'),
-array('timestamp'=>'1521388800000','指标1'=>'www4','指标2'=>'1'),
-);
-$data_opt=array(
-"指标1"=>array("type"=>"spline","yaxis"=>0),
-"指标2"=>array("type"=>"column","yaxis"=>1),
-);
-//print_r($data_opt);exit;
-/*
-产生series的数据格式
-1 没有指定name，除x外，其他都是name
-2 有指定name，除x外，其他都是值。只能有两个字段，一个name，一个值.
-
-*/
-class GenerateSeries{
+namespace Home\Model;
+class HighchartData{
     /* 成员变量 */
     var $_sqlRes;
     var $_opt=array();
@@ -33,11 +12,13 @@ class GenerateSeries{
     var $_valueType="number";
 
     /* 构造函数 */
-    function __construct($sqlResult){
-        $this->_sqlRes=$sqlResult;
+    function __construct(){
     }
 
     /* 成员函数 */
+    function setArray($sqlResult){
+        $this->_sqlRes=$sqlResult;
+    }
     function setX($x){
         $this->_xkey=$x;
     }
@@ -175,12 +156,7 @@ class GenerateSeries{
         }
         return $returnArr;
     }
-    //析构函数
-    function __destruct() {}    
-}
 
-$test=new GenerateSeries($data_array);
-$test->setX('timestamp');
-$test->setOpt($data_opt);
-$test->setJson();
-print_r($test->getData());
+    function __destruct() {}
+
+}
