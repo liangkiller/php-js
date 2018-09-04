@@ -7,7 +7,7 @@ class HighchartData{
     var $_xkey;
     var $_name;
     var $_seriesArr=array();
-    var $_json=0;
+    var $_json=1;
     var $_xtype="number";
     var $_valueType="number";
 
@@ -50,8 +50,8 @@ class HighchartData{
             return strval($value);
         }
     }
-    function setJson(){
-        $this->_json=1;
+    function setJson($type){
+        $this->_json=$type;
     }
     //从数组中取得x轴数值,一般是日期
     function getxData(){
