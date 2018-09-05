@@ -3,21 +3,28 @@ namespace Home\Model;
 class HighchartData{
     /* 成员变量 */
     var $_sqlRes;
-    var $_opt=array();
+    var $_opt;
     var $_xkey;
     var $_name;
-    var $_seriesArr=array();
-    var $_json=1;
-    var $_xtype="number";
-    var $_valueType="number";
+    var $_seriesArr;
+    var $_json;
+    var $_xtype;
+    var $_valueType;
 
     /* 构造函数 */
     function __construct(){
     }
-
     /* 成员函数 */
     function setArray($sqlResult){
         $this->_sqlRes=$sqlResult;
+        //初始化
+        $this->_json=1;
+        $this->_xtype="number";
+        $this->_valueType="number";
+        $this->_opt=array();
+        $this->_seriesArr=array();
+        $this->_xkey="";
+        $this->_name="";
     }
     function setX($x){
         $this->_xkey=$x;
